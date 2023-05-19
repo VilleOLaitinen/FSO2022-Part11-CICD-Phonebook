@@ -1,16 +1,22 @@
 module.exports = {
-  'env': {
+  env: {
     'commonjs': true,
     'es2021': true,
-    'node': true
+    'node': true,
+    'cypress/globals': true
   },
-  'extends': 'eslint:recommended',
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
+  plugins: ['react', 'cypress'],
   'overrides': [
   ],
-  'parserOptions': {
-    'ecmaVersion': 'latest'
-  },
-  'rules': {
+  rules: {
     'indent': [
       'error',
       2

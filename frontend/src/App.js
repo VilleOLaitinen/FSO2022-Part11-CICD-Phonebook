@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import NameFilter from './components/NameFilter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
@@ -32,6 +32,7 @@ const App = () => {
           }, 5000)
         })
         .catch(error => {
+          console.error(error)
           setNotification(`Error: ${person.name} has already been removed from server.`)
           setTimeout(() => {
             setNotification(null)
@@ -73,7 +74,8 @@ const App = () => {
     if (window.confirm(`Do you really want to delete ${person.name}?`)) {
       personsService
         .delet(id)
-        .then(reutnedName => {
+        //
+        .then(() => {
           setPersons(persons.filter(person => person.id !== id))
           setNotification(`${person.name} has been successfully deleted.`)
           setTimeout(() => {
@@ -81,6 +83,7 @@ const App = () => {
           }, 5000)
         })
         .catch(error => {
+          console.error(error)
           setNotification(`Error: ${person.name} has already been removed from server.`)
           setTimeout(() => {
             setNotification(null)
