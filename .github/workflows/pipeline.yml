@@ -45,6 +45,21 @@ jobs:
           service-id: ${{ secrets.SERVICE_ID}}
           api-key: ${{ secrets.API_KEY }}
 
+      - name: Deployment notification
+        uses: rjstone/discord-webhook-notify@v1
+        if: steps.deploy.outcome == 'success'
+        with:
+          severity: info
+          details: Deployed successfully to render!
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
+      - name: Failure notification
+        uses: rjstone/discord-webhook-notify@v1
+        if: failure()
+        with:
+          severity: error
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
   tag_release:
     needs: [deployment_pipeline]
     runs-on: ubuntu-20.04
