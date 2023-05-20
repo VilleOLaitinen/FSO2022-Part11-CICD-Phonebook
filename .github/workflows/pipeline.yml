@@ -34,5 +34,5 @@ jobs:
         with:
           command: npm run start-e2e-tests
           start:  npm run start-prod
-          wait-on: http://localhost:3001
+          wait-on: http://localhost:3001/info
           working-directory: backend
