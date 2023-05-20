@@ -1,1 +1,1 @@
-# FSO2022-Part11-CICD-Phonebook
+Part 11 Pokedex repo link: https://github.com/VilleOLaitinen/full-stack-open-pokedex

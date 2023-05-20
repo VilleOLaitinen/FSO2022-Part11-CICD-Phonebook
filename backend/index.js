@@ -102,6 +102,18 @@ app.delete('/api/persons/:id', (request, response, next) => {
     .catch(error => next(error))
 })
 
+
+app.post('/api/testing/reset', (request, response, next) => {
+  if (process.env.NODE_ENV === 'test') {
+    Person.deleteMany({}).then(() => {
+      response.status(204).end()
+    }).catch(error => next(error))
+  } else {
+    response.status(403).send({ error: 'not running on testing environment' })
+  }
+})
+
+
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' })
 }
