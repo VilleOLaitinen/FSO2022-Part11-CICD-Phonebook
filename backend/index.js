@@ -24,6 +24,10 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :bodydata'))
 
+app.get('/health', (req, res) => {
+  res.send('ok')
+})
+
 app.get('/info', (request, response, next) => {
   Person.countDocuments().then(count => {
     response.send(
