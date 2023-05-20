@@ -28,6 +28,10 @@ app.get('/health', (req, res) => {
   res.send('ok')
 })
 
+app.get('/version', (req, res) => {
+  res.send('1')
+})
+
 app.get('/info', (request, response, next) => {
   Person.countDocuments().then(count => {
     response.send(

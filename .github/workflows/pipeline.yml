@@ -36,3 +36,11 @@ jobs:
           start:  npm run start-prod
           wait-on: http://localhost:3001/info
           working-directory: backend
+
+      - name: Deploy to render.com
+        id: deploy
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
+        with:
+          service-id: ${{ secrets.SERVICE_ID}}
+          api-key: ${{ secrets.API_KEY }}
