@@ -8,7 +8,9 @@
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf build && cd ../frontend && npm run build && cp -r build ../backend",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start-prod": "node index.js",
+    "start-e2e-tests": "cd .. && cd frontend && npm run test:e2e"
   },
   "repository": {
     "type": "git",
